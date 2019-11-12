@@ -11,3 +11,6 @@ and run it:
 sh install.sh
 
 
+stuff to install (WIP):
+
+polybar, i3-gaps, rofi, vscode, firefox, probably x11
