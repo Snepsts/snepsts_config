@@ -149,7 +149,7 @@ Okay, your system is now mounted!
 
 Make sure the mirrorlist has a couple United States mirrors at the top. It's located in `/etc/pacman.d/mirrorlist`.
 
-If you don't, the downloads _might_ take a bit longer.
+If you don't, the downloads might take a _bit_ longer.
 
 Now run the following to prepare your arch linux filesystem:
 
@@ -193,9 +193,17 @@ Then run this:
 
 Afterwards, type your locale of choice in `/etc/locale.conf` like so:
 
-`LANG=en_US.UTF-8`
+```
+LANG=en_US.UTF-8
+```
 
 ### Networking
+
+Edit your `/etc/hostname` file to give your computer a name, I'm gonna name mine `snepsts-laptop`.
+
+```
+snepsts-laptop
+```
 
 Edit `/etc/hosts` and type the following:
 
