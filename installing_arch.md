@@ -102,7 +102,7 @@ Each partition should start on the closest sector to the last, the first startin
 
 You can use `+[number][M|G|T]` to add from there.
 
-For example: `+2G` will make the partition
+For example: `+2G` will make the partition 2 gigabytes in size.
 
 Make each partition:
 
@@ -317,5 +317,87 @@ Test that your connection works:
 
 `ping archlinux.org`
 
-### Other stuff
+### Permissions n shell stuffs
 
+Add `zsh`, `sudo` and `vi`:
+
+`pacman -S zsh sudo vi`
+
+Now we're going to edit the `sudoers` file:
+
+`visudo`
+
+Locate the following entry:
+
+```
+## Uncoment to allow members of group wheel to execute any command
+# %wheel ALL=(ALL) ALL
+```
+
+Hit `i` to go into insert mode and uncomment it so it looks like this:
+
+```
+## Uncoment to allow members of group wheel to execute any command
+%wheel ALL=(ALL) ALL
+```
+
+Cool. Now head to the bottom of the file and type the following:
+
+```
+## Disable password timeout
+Defaults passwd_timeout=0
+## Environment variables
+Defaults env_keep += "ftp_proxy http_proxy https_proxy no_proxy"
+```
+
+`esc` to exit insert mode and type `:x` to exit.
+
+Now, you're still logged in as root, so it's time to set up a generic user account for yourself. I'm naming my user `snepsts`:
+
+`useradd -m -G wheel -s /bin/zsh snepsts`
+
+Give them a password:
+
+`passwd snepsts`
+
+Logout:
+
+`logout`
+
+Now login as your user.
+
+### AUR and zsh enhancements
+
+Install `yay` to get a pacman wrapper for AUR packages.
+
+But first we need `git`, `fakeroot`, `go` and `base-devel`:
+
+`sudo pacman -S git fakeroot base-devel go`
+
+```
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+You should be able to use `yay` now. Let's use it to install oh-my-zsh:
+
+`yay -S oh-my-zsh-git`
+
+## GUI
+
+Install video drivers:
+
+* Intel: `sudo pacman -S xf86-video-intel mesa`
+
+* AMD: `sudo pacman -S xf86-video-amdgpu mesa`
+
+* Nvidia: `sudo pacman -S nvidia-390xx nvidia-390xx-utils`
+
+Install `xorg-server`, `xterm` and `i3-gaps`:
+
+`sudo pacman -S xorg-server xterm i3-gaps`
+
+Now install `polybar`:
+
+`yay -S polybar`
