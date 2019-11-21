@@ -394,10 +394,24 @@ Install video drivers:
 
 * Nvidia: `sudo pacman -S nvidia-390xx nvidia-390xx-utils`
 
-Install `xorg-server`, `xterm` and `i3-gaps`:
+Install `xorg-server` and `xorg-xinit`:
 
-`sudo pacman -S xorg-server xterm i3-gaps`
+`sudo pacman -S xorg-server xorg-xinit`
 
 Now install `polybar`:
 
 `yay -S polybar`
+
+Now install some packages we need for i3:
+
+`sudo pacman -S i3-gaps feh dmenu xterm xorg-xbacklight picom`
+
+Now, starting from your home folder (`/home/<username>/` or `/~`) copy all things from `directory_files` there.
+
+`reboot`, login and run `startx`
+
+### Settling in to GUI
+
+Install a web browser:
+
+`sudo pacman -S firefox`
