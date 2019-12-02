@@ -245,6 +245,10 @@ Everything should be done now.
 
 ### Last things
 
+We'll probably need `acpid` later, install it:
+
+`pacman -S acpid`
+
 If you have wifi, run the following:
 
 `pacman -S networkmanager`
@@ -424,3 +428,4 @@ Install some sound stuff:
 
 `sudo pacman -S pulseaudio pulseaudio-alsa`
 
+and then `reboot` for the sound to start up.
