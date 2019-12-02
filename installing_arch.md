@@ -415,3 +415,12 @@ Now, starting from your home folder (`/home/<username>/` or `/~`) copy all thing
 Install a web browser:
 
 `sudo pacman -S firefox`
+
+Install some font stuff:
+
+`yay -S ttf-material-design-icons-git`
+
+Install some sound stuff:
+
+`sudo pacman -S pulseaudio pulseaudio-alsa`
+
