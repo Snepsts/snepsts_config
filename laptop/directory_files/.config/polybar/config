@@ -77,11 +77,10 @@ module-margin-right = 1
 
 font-0 = Meslo LG S DZ for Powerline:style=Regular:pixelsize=16;1
 font-1 = Material Design Icons:pixelsize=18
-font-2 = material\-wifi:pixelsize=18
 
 modules-left = i3
 modules-center =
-modules-right = xkeyboard pulseaudio xbacklight wlan eth battery date
+modules-right = xkeyboard wlan eth pulseaudio backlight-acpi xbacklight battery date
 
 tray-position = right
 tray-padding = 2
@@ -166,18 +165,14 @@ label = %percentage%%
 
 enable-scroll = false
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-ramp-5 = 
-ramp-6 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 
-; [module/backlight-acpi]
-; inherit = module/xbacklight
-; type = internal/backlight
-; card = intel_backlight
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
 
 ; [module/cpu]
 ; type = internal/cpu
@@ -209,10 +204,14 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
+
+;low signal
+ramp-signal-0 = 冷
+ramp-signal-1 = 爛
+ramp-signal-2 = 嵐
+ramp-signal-3 = 襤
+ramp-signal-4 = 蠟
+;high signal
 
 [module/eth]
 type = internal/network
@@ -235,12 +234,11 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = %m/%d/%y
+date-alt =  %m/%d/%y
 
-time = %I:%M:%S
+time =  %I:%M:%S
 time-alt =
 
-format-prefix = " "
 format-underline = ${colors.primary}
 
 label = %date%%time%
@@ -255,12 +253,12 @@ label-volume-foreground = ${root.foreground}
 
 format-muted = <label-muted>
 format-muted-underline = ${colors.red}
-label-muted =  %percentage%%
+label-muted =  %percentage%%
 label-muted-foreground = ${colors.foreground-alt}
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 [module/battery]
 type = internal/battery
@@ -271,35 +269,39 @@ full-at = 98
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.green}
 
+;format-discharging-prefix = ""
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${colors.primary}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full = <label-full>
 format-full-prefix-foreground = ${colors.green}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
-ramp-capacity-7 = 
-ramp-capacity-8 = 
-ramp-capacity-9 = 
-ramp-capacity-10 = 
+; almost empty
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+ramp-capacity-10 = 
+ramp-capacity-11 = 
+; full
 ramp-capacity-foreground = ${colors.foreground}
 ramp-capacity-0-foreground = ${colors.red}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-5 = 
-animation-charging-6 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
 animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
 

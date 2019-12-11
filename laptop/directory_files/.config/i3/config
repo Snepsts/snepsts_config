@@ -33,22 +33,22 @@ bindsym $mod+n border normal
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run
 
 # Change brightness
-bindsym XF86MonBrightnessUp exec ~/.scripts/brightnessup
-bindsym XF86MonBrightnessDown exec ~/.scripts/brightnessdown
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/brightnessup
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/brightnessdown
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% # increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% # decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # change focus
 bindsym $mod+j focus left
@@ -200,7 +200,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+9 exec --no-startup-id ~/scripts/lockscript
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id compton --no-fading-openclose
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id feh --bg-fill ~/Pictures/dont_tread_on_me3.jpg
 
 # Start i3bar to display a workspace bar (plus the system information i3status

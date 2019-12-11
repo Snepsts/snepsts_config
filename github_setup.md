@@ -20,13 +20,19 @@ It will prompt you for the file to save it to, enter this:
 
 It will prompt you for a passphrase. Up to you if you want to enter one.
 
-After that, get that ssh-agent up and running:
+After that, open `~/.ssh/config`:
 
-`eval "$(ssh-agent -s)"`
+`nano ~/.ssh/config`
 
-Now add the key to your ssh-agent
+and enter the following lines somewhere in the file:
 
-`ssh-add ~/.ssh/id_rsa_github`
+```
+AddKeysToAgent yes
+
+Host github.com
+	User git
+	IdentityFile /path/to/your/ssh/key
+```
 
 You're good to go from your computer's side.
 
