@@ -429,3 +429,7 @@ Install some sound stuff:
 `sudo pacman -S pulseaudio pulseaudio-alsa`
 
 and then `reboot` for the sound to start up.
+
+Lockscreen stuff:
+
+`sudo pacman -S i3lock-color xss-lock`

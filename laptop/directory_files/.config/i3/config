@@ -197,7 +197,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id ~/scripts/lockscript
+bindsym $mod+9 exec --no-startup-id ~/.scripts/lockscript
+
+exec --no-startup-id xss-lock -- ~/.scripts/lockscript
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
