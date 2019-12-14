@@ -433,3 +433,11 @@ and then `reboot` for the sound to start up.
 Lockscreen stuff:
 
 `sudo pacman -S i3lock-color xss-lock`
+
+VPN stuff:
+
+Download pia-linux.run from PIA's site
+
+`chmod +x pia-linux.run`
+
+`./pia-linux.run`

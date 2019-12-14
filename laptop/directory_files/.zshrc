@@ -2,16 +2,23 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/usr/share/oh-my-zsh
 export OPENSSL_ENABLE_MD5_VERIFY=1
 
-export PATH=~/.local/bin:$PATH
+# ssh stuff
+# [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
+
+# Secrets
+source $HOME/.zsh_secrets
+
+# Aliases & Exports
+source $HOME/.zsh_aliases
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -65,7 +72,8 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions extract)
+# plugins=(git zsh-autosuggestions extract archlinux)
+plugins=(git extract archlinux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,3 +108,12 @@ stty icrnl
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/snepsts/billing/bill-rollup/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/snepsts/billing/bill-rollup/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/snepsts/billing/bill-rollup/node_modules/tabtab/.completions/sls.zsh ]] && . /home/snepsts/billing/bill-rollup/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/snepsts/billing/bill-rollup/node_modules/tabtab/.completions/slss.zsh ]] && . /home/snepsts/billing/bill-rollup/node_modules/tabtab/.completions/slss.zsh
