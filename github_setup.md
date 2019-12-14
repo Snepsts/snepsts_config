@@ -103,4 +103,6 @@ Finally, we need to make sure gpg knows where to prompt for info:
 
 `export GPG_TTY=$(tty)`
 
-Add it to your `.zshrc` or something similar to that.
+NOTE: if you copied the files from this repo it is already exported in your zshrc
+
+Export it in your `.zshrc` or somewhere like that to make the change permanent.
