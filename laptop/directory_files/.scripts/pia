@@ -31,12 +31,3 @@ else
 fi
 
 echo "${ACTION_START}${POLYBAR_STRING}${ACTION_END}"
-
-# disconnected
-# echo %{u#F0AE4C}%{F#555}%{+u}$DISCONNECTED%{u- F-}
-
-# connecting
-# echo %{u#FFBB5A}%{F#DFDFDF}%{+u}$CONNECTING%{u- F-}
-
-# connected
-# echo %{u#00C853}%{F#DFDFDF}%{+u}$CONNECTED%{u- F-}
