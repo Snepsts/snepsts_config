@@ -441,3 +441,9 @@ Download pia-linux.run from PIA's site
 `chmod +x pia-linux.run`
 
 `./pia-linux.run`
+
+Rofi:
+
+`sudo pacman -S rofi`
+
+`yay -S rofi-dmenu`
