@@ -1,3 +1,5 @@
+#!/bin/bash
+
 rofi -show run -modi run -hide-scrollbar -font "Meslo LG S DZ for Powerline 12" \
 -color-window "#222222, #222222, #222222" \
 -color-normal "#222222, #DFDFDF, #222222, #F0AE4C, #444444" \

@@ -80,7 +80,7 @@ font-1 = Material Design Icons:pixelsize=18
 
 modules-left = i3
 modules-center =
-modules-right = xkeyboard pia wlan eth pulseaudio backlight-acpi xbacklight battery date
+modules-right = xkeyboard pia wlan eth pulseaudio-control backlight-acpi xbacklight battery date
 
 tray-position = right
 tray-padding = 2
@@ -243,22 +243,16 @@ format-underline = ${colors.primary}
 
 label = %date%%time%
 
-[module/pulseaudio]
-type = internal/pulseaudio
+[module/pulseaudio-control]
+type = custom/script
+tail = true
 
-format-volume = <ramp-volume> <label-volume>
-format-volume-underline = ${colors.primary}
-label-volume = %percentage%%
-label-volume-foreground = ${root.foreground}
-
-format-muted = <label-muted>
-format-muted-underline = ${colors.red}
-label-muted =  %percentage%%
-label-muted-foreground = ${colors.foreground-alt}
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+exec = ~/.scripts/pulseaudio_control --listen
+click-right = exec pavucontrol &
+click-left = ~/.scripts/pulseaudio_control --togmute
+click-middle = ~/.scripts/pulseaudio_control --change
+scroll-up = ~/.scripts/pulseaudio_control --up
+scroll-down = ~/.scripts/pulseaudio_control --down
 
 [module/battery]
 type = internal/battery

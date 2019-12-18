@@ -468,3 +468,11 @@ QT_QPA_PLATFORMTHEME=gtk2
 Install roboto:
 
 `yay -S ttf-roboto`
+
+Install networkmanager-openvpn:
+
+`sudo pacman -S networkmanager-openvpn`
+
+Install pavucontrol:
+
+`sudo pacman -S pavucontrol`
