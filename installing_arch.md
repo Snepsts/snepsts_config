@@ -447,3 +447,24 @@ Rofi:
 `sudo pacman -S rofi`
 
 `yay -S rofi-dmenu`
+
+QT theming:
+
+`nano ~/.config/Trolltech.conf`
+
+```
+[Qt]
+style=GTK+
+```
+
+`sudo pacman -S qt5-styleplugins`
+
+`sudo nano /etc/environment`
+
+```
+QT_QPA_PLATFORMTHEME=gtk2
+```
+
+Install roboto:
+
+`yay -S ttf-roboto`
