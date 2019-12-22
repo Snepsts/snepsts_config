@@ -206,6 +206,17 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+bindsym $mod+p mode "$mode_polybar"
+set $mode_polybar 1: no tray, 2: tray
+# set polybar tray configuration
+mode "$mode_polybar" {
+        bindsym 1 exec --no-startup-id ~/.config/polybar/set_default.sh; mode "default"; exec --no-startup-id ~/.config/polybar/launch_polybar.sh
+        bindsym 2 exec --no-startup-id ~/.config/polybar/set_tray.sh; mode "default"; exec --no-startup-id ~/.config/polybar/launch_polybar.sh
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 bindsym $mod+r mode "resize"
 
 # Lock screen
@@ -214,7 +225,7 @@ bindsym $mod+9 exec --no-startup-id ~/.scripts/lockscript
 exec --no-startup-id xss-lock -- ~/.scripts/lockscript
 exec --no-startup-id /opt/piavpn/bin/pia-client
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id feh --bg-fill ~/Pictures/dont_tread_on_me3.jpg
 
