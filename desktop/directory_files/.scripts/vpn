@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ICON=""
+GREEN_UNDERLINE=%{u#00C853}%{+u}
+WHITE_FONT=%{F#DFDFDF}
+STRING_END="%{u- F-}"
+
+OPEN_VPN_STATUS=(pgrep -a openvpn$ | head -n 1 | awk '{print $NF }' | cut -d '.' -f 1 && echo down) | head -n 1
+
+if [ "$OPEN_VPN_STATUS" = "down" ]; then
+	POLYBAR_STRING=""
+else
+	POLYBAR_STRING="${GREEN_UNDERLINE}${WHITE_FONT}${ICON} ${OPEN_VPN_STATUS}${STRING_END}"
+fi
+
+echo "${POLYBAR_STRING}"

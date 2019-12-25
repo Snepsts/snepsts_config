@@ -1,0 +1,4 @@
+# custom exports and aliases
+
+export PATH=~/.local/bin:$PATH
+export GPG_TTY=$(tty)

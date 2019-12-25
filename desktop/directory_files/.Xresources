@@ -1,0 +1,79 @@
+Xft.dpi:       96
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.autohint:  false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+XTerm*background:        #222D31
+XTerm*foreground:        #d8d8d8
+XTerm*pointerColor:      #1ABB9B
+XTerm*faceName:          Fixed
+XTerm*faceSize:          11
+XTerm*reverseVideo:      on
+XTerm*selectToClipboard: true
+
+URxvt*scrollTtyOutput: false
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.secondaryWheel: 1
+URxvt.font: xft:Meslo\ LG\ S\ DZ\ for\ Powerline:size=10
+URxvt.perl-ext-common: clipboard
+URxvt.clipboard.autocopy: true
+URxvt.keysym.C-Alt-c: perl:clipboard:copy
+URxvt.keysym.C-Alt-v: perl:clipboard:paste
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.scrollBar: false
+
+!! Colorscheme
+
+! special
+*background:                      #222222
+*foreground:                      #dfdfdf
+*fading:                          8
+*fadeColor:                       #000000
+*cursorColor:                     #d8d8d8
+*pointerColorBackground:          #2B2C2B
+*pointerColorForeground:          #16A085
+
+! black
+*.color0: #222222
+*.color8: #444444
+
+! red
+*.color1: #DD2C00
+*.color9: #e7532e
+
+! green
+*.color2: #00C853
+*.color10: #66BB6A
+
+! yellow
+!! *.color3: #F0AE4C
+!! *.color11: #FFBB5A
+
+! yellow as blue (for theme)
+*.color3: #0f82df
+*.color11: #3b9ff0
+
+! blue
+!! *.color4: #0f82df
+!! *.color12: #3b9ff0
+
+! blue as yellow (for theme)
+*.color4: #f0ae4c
+*.color12: #ffbb5a
+
+! magenta
+*.color5: #9c0fdf
+*.color13: #bb65ea
+
+! cyan
+*.color6: #08aacb
+*.color14: #28c4e6
+
+! white
+*.color7: #dfdfdf
+*.color15: #f5f5f5

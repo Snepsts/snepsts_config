@@ -1,0 +1,31 @@
+#!/bin/bash
+
+CONNECTED=
+DISCONNECTED=
+ALERT=
+UNKNOWN=
+CONNECTING=量
+
+STATUS=`/opt/piavpn/bin/piactl get connectionstate`
+
+PRIMARY_UNDERLINE=%{u#F0AE4C}%{+u}
+RED_UNDERLINE=%{u#DD2C00}%{+u}
+YELLOW_UNDERLINE=%{u#FFBB5A}%{+u}
+GREEN_UNDERLINE=%{u#00C853}%{+u}
+WHITE_FONT=%{F#DFDFDF}
+GREY_FONT=%{F#555}
+STRING_END="%{u- F-}"
+
+if [ "$STATUS" = "Disconnected" ]; then
+	POLYBAR_STRING="${PRIMARY_UNDERLINE}${GREY_FONT}${DISCONNECTED}${STRING_END}"
+elif [ "$STATUS" = "Connecting" ] || [ "$STATUS" = "StillConnecting" ] || [ "$STATUS" = "Reconnecting" ] || [ "$STATUS" = "StillReconnecting" ] || [ "$STATUS" = "DisconnectingToReconnect" ] || [ "$STATUS" = "Disconnecting" ]; then
+	POLYBAR_STRING="${YELLOW_UNDERLINE}${WHITE_FONT}${CONNECTING}${STRING_END}"
+elif [ "$STATUS" = "Interrupted" ]; then
+	POLYBAR_STRING="${RED_UNDERLINE}${WHITE_FONT}${ALERT}${STRING_END}"
+elif [ "$STATUS" = "Connected" ]; then
+	POLYBAR_STRING="${GREEN_UNDERLINE}${WHITE_FONT}${CONNECTED}${STRING_END}"
+else
+	POLYBAR_STRING="${PRIMARY_UNDERLINE}${WHITE_FONT}${UNKNOWN}${STRING_END}"
+fi
+
+echo $POLYBAR_STRING
