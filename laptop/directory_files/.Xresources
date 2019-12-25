@@ -18,7 +18,7 @@ URxvt*scrollTtyOutput: false
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
-URxvt.font: xft:Meslo\ LG\ M\ for\ Powerline:size=10
+URxvt.font: xft:Meslo\ LG\ S\ DZ\ for\ Powerline:size=10
 URxvt.perl-ext-common: clipboard
 URxvt.clipboard.autocopy: true
 URxvt.keysym.C-Alt-c: perl:clipboard:copy
