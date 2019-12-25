@@ -104,6 +104,8 @@ You can use `+[number][M|G|T]` to add from there.
 
 For example: `+2G` will make the partition 2 gigabytes in size.
 
+If you need to change from the basic type `Linux filesystem` type t and enter the code for the filesystem.
+
 Make each partition:
 
 * EFI patition, roughly 512 MB - 1 GB. It will be `EFI System`. This should be the first partition & bootable.
@@ -113,6 +115,8 @@ Make each partition:
 * Home partition. Make this as large as you want. It will be `Linux filesystem`.
 
 * Optionally, a swap partition. I always make it the size of my RAM or 8 GB, whichever is smaller. It will be `Linux swap`.
+
+When you're done type: `w`.
 
 Afterwards, you will format each partition accordingly:
 
@@ -269,6 +273,16 @@ Reboot:
 
 ## Settling into Arch Linux
 
+### Ethernet
+
+Only needs `NetowrkManager`:
+
+`systemctl enable NetworkManager.service`
+
+`systemctl start NetworkManager.service`
+
+Now network manager has been enabled!
+
 ### Wifi
 
 You remember how this goes:
@@ -408,7 +422,11 @@ Now install `polybar`:
 
 Now install some packages we need for i3:
 
-`sudo pacman -S i3-gaps feh dmenu xterm xorg-xbacklight picom`
+`sudo pacman -S i3-gaps feh dmenu xterm xorg-xbacklight picom rxvt-unicode pulseaudio pulseaudio-alsa i3lock-color xss-lock rofi qt5-styleplugins pavucontrol networkmanager-openvpn`
+
+Install some font stuff:
+
+`yay -S ttf-material-design-icons-git rofi-dmenu ttf-roboto`
 
 Now, starting from your home folder (`/home/<username>/` or `/~`) copy all things from `directory_files` there.
 
@@ -420,20 +438,6 @@ Install a web browser:
 
 `sudo pacman -S firefox`
 
-Install some font stuff:
-
-`yay -S ttf-material-design-icons-git`
-
-Install some sound stuff:
-
-`sudo pacman -S pulseaudio pulseaudio-alsa`
-
-and then `reboot` for the sound to start up.
-
-Lockscreen stuff:
-
-`sudo pacman -S i3lock-color xss-lock`
-
 VPN stuff:
 
 Download pia-linux.run from PIA's site
@@ -442,37 +446,10 @@ Download pia-linux.run from PIA's site
 
 `./pia-linux.run`
 
-Rofi:
-
-`sudo pacman -S rofi`
-
-`yay -S rofi-dmenu`
-
 QT theming:
-
-`nano ~/.config/Trolltech.conf`
-
-```
-[Qt]
-style=GTK+
-```
-
-`sudo pacman -S qt5-styleplugins`
 
 `sudo nano /etc/environment`
 
 ```
 QT_QPA_PLATFORMTHEME=gtk2
 ```
-
-Install roboto:
-
-`yay -S ttf-roboto`
-
-Install networkmanager-openvpn:
-
-`sudo pacman -S networkmanager-openvpn`
-
-Install pavucontrol:
-
-`sudo pacman -S pavucontrol`
