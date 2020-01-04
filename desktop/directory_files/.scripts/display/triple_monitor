@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xrandr --output DisplayPort-1 --primary --mode 1920x1080 --rate 143.98
+xrandr --output HDMI-A-1 --right-of DisplayPort-1 --mode 1920x1080 --rate 143.98
+xrandr --output HDMI-A-0 --rotate left --left-of DisplayPort-1 --rate 60 --mode 1920x1080

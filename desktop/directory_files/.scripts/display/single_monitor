@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xrandr --output DisplayPort-1 --primary --mode 1920x1080 --rate 143.98
+xrandr --output HDMI-A-1 --off
+xrandr --output HDMI-A-0 --off

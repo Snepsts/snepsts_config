@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SCRIPT_NAME=$0
+SCRIPT_FULL_PATH=$(dirname "$0")
+MONITOR_VALUE=$(< "${SCRIPT_FULL_PATH}/monitor_value")
+
+echo $MONITOR_VALUE
+
+if [ "$MONITOR_VALUE" = "1" ]; then
+	sh "${SCRIPT_FULL_PATH}/triple_monitor"
+elif [ "$MONITOR_VALUE" = "2" ]; then
+	sh "${SCRIPT_FULL_PATH}/single_monitor"
+else
+	sh "${SCRIPT_FULL_PATH}/triple_monitor"
+fi

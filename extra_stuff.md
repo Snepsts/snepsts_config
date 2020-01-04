@@ -15,3 +15,17 @@ Preview your font from the CLI:
 Using vim, type ctrl+v, u, then the last four hex digits of the unicode character. For example:
 
 `^vufe54`
+
+## Checking X11 key codes
+
+`sudo pacman -S xorg-xev`
+
+`xev -event keyboard | egrep -o 'keycode.*\)'`
+
+## Fixing random bad startx
+
+`sudo nano /etc/mkinitcpio.conf`
+
+```
+MODULES=(... amdgpu, ...)
+```

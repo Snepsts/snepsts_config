@@ -54,14 +54,10 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id ~/.scripts/rofi_dmenu
 
-# Change brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.scripts/brightnessup
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.scripts/brightnessdown
-
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.scripts/volume_up # increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.scripts/volume_down # decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id ~/.scripts/volume_toggle_mute # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.scripts/volume/volume_up # increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.scripts/volume/volume_down # decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id ~/.scripts/volume/volume_toggle_mute # mute sound
 
 # change focus
 bindsym $mod+j focus left
@@ -137,6 +133,7 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
+set $ws9 "9"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -147,6 +144,7 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -157,6 +155,17 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+workspace $ws1 output DisplayPort-1
+workspace $ws2 output DisplayPort-1
+workspace $ws3 output DisplayPort-1
+workspace $ws4 output DisplayPort-1
+workspace $ws5 output HDMI-A-1
+workspace $ws6 output HDMI-A-1
+workspace $ws7 output HDMI-A-1
+workspace $ws8 output HDMI-A-1
+workspace $ws9 output HDMI-A-0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -181,50 +190,64 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
+bindsym $mod+m mode "$change_monitors"
+set $change_monitors 1: Triple Monitor, 2: Single Monitor
+mode "$change_monitors" {
+    bindsym 1 exec --no-startup-id ~/.scripts/display/set_triple_monitor; mode "default"; exec --no-startup-id ~/.scripts/display/execute_monitor
+    bindsym 2 exec --no-startup-id ~/.scripts/display/set_single_monitor; mode "default"; exec --no-startup-id ~/.scripts/display/execute_monitor
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym $mod+m mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+p mode "$mode_polybar"
 set $mode_polybar 1: no tray, 2: tray
 # set polybar tray configuration
 mode "$mode_polybar" {
-        bindsym 1 exec --no-startup-id ~/.config/polybar/set_default.sh; mode "default"; exec --no-startup-id ~/.config/polybar/launch_polybar.sh
-        bindsym 2 exec --no-startup-id ~/.config/polybar/set_tray.sh; mode "default"; exec --no-startup-id ~/.config/polybar/launch_polybar.sh
+    bindsym 1 exec --no-startup-id ~/.config/polybar/set_default.sh; mode "default"; exec --no-startup-id ~/.config/polybar/launch_polybar.sh
+    bindsym 2 exec --no-startup-id ~/.config/polybar/set_tray.sh; mode "default"; exec --no-startup-id ~/.config/polybar/launch_polybar.sh
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+p mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id ~/.scripts/lockscript
+# bindsym $mod+l exec --no-startup-id ~/.scripts/lockscript
 
 exec --no-startup-id xss-lock -- ~/.scripts/lockscript
 exec --no-startup-id /opt/piavpn/bin/pia-client
 
+exec_always --no-startup-id $HOME/.config/display/execute_monitor
 exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id feh --bg-fill ~/Pictures/dont_tread_on_me3.jpg
@@ -245,9 +268,9 @@ gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
-
+# gaps inner all set 10    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 # Smart gaps (gaps used if only more than one container on the workspace)
 #smart_gaps on
 

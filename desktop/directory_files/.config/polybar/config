@@ -58,7 +58,7 @@ font-1 = Material Design Icons:pixelsize=18
 
 modules-left = i3
 modules-center =
-modules-right = xkeyboard pia wlan eth pulseaudio-control backlight-acpi xbacklight battery date
+modules-right = xkeyboard pia eth pulseaudio-control date
 
 tray-position = none
 
@@ -124,27 +124,6 @@ label-urgent = %index%
 label-urgent-background = ${colors.primary}
 label-urgent-padding = 1
 
-; Separator in between workspaces
-; label-separator = |
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <ramp> <label>
-format-underline = ${colors.primary}
-label = %percentage%%
-
-enable-scroll = false
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
 ; [module/cpu]
 ; type = internal/cpu
 ; interval = 2
@@ -161,44 +140,18 @@ card = intel_backlight
 ; format-underline = #4bffdc
 ; label = %percentage_used%%
 
-[module/wlan]
-type = internal/network
-interface = wlp58s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.primary}
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-;low signal
-ramp-signal-0 = 冷
-ramp-signal-1 = 爛
-ramp-signal-2 = 嵐
-ramp-signal-3 = 襤
-ramp-signal-4 = 蠟
-;high signal
-
 [module/eth]
 type = internal/network
-interface = docker0
+interface = enp7s0
 interval = 3.0
 
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+format-connected-underline = ${colors.primary}
+format-connected = ""
+format-connected-foreground = ${colors.foreground}
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected-underline = ${colors.red}
+format-disconnected = ""
+format-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -224,51 +177,6 @@ click-left = ~/.scripts/pulseaudio_control --togmute
 click-middle = ~/.scripts/pulseaudio_control --change
 scroll-up = ~/.scripts/pulseaudio_control --up
 scroll-down = ~/.scripts/pulseaudio_control --down
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.green}
-
-;format-discharging-prefix = ""
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${colors.primary}
-
-format-full-prefix = " "
-format-full = <label-full>
-format-full-prefix-foreground = ${colors.green}
-format-full-underline = ${self.format-charging-underline}
-
-; almost empty
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
-ramp-capacity-7 = 
-ramp-capacity-8 = 
-ramp-capacity-9 = 
-ramp-capacity-10 = 
-ramp-capacity-11 = 
-; full
-ramp-capacity-foreground = ${colors.foreground}
-ramp-capacity-0-foreground = ${colors.red}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-5 = 
-animation-charging-6 = 
-animation-charging-foreground = ${colors.foreground}
-animation-charging-framerate = 750
 
 ; [module/temperature]
 ; type = internal/temperature
