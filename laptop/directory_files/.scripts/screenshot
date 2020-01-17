@@ -1,0 +1,3 @@
+#!/bin/bash
+
+maim -u ~/Pictures/screenshots/screenshot_$(date +%s).png && notify-send 'screen capture saved'
