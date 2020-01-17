@@ -406,11 +406,14 @@ You should be able to use `yay` now. Let's use it to install oh-my-zsh:
 
 Install video drivers:
 
-* Intel: `sudo pacman -S xf86-video-intel mesa`
+* Intel: `sudo pacman -S mesa`
 
 * AMD: `sudo pacman -S xf86-video-amdgpu mesa`
 
-* Nvidia: `sudo pacman -S nvidia-390xx nvidia-390xx-utils`
+* Nvidia: `sudo pacman -S nvidia nvidia-utils`
+
+* Dual Graphics with NVIDIA & Intel:
+	* `sudo pacman -S mesa nvidia nvidia-utils nvidia-prime`
 
 Install `xorg-server` and `xorg-xinit`:
 

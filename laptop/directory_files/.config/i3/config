@@ -222,6 +222,14 @@ bindsym $mod+r mode "resize"
 # Lock screen
 bindsym $mod+9 exec --no-startup-id ~/.scripts/lockscript
 
+# screenshot
+bindsym $mod+Shift+s exec --no-startup-id ~/.scripts/screenshot
+bindsym $mod+Shift+x --release exec --no-startup-id ~/.scripts/select_screenshot
+
+# Custom hack for Teams
+for_window [title="Microsoft Teams Notification" class="microsoft teams - preview"] floating enable
+for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable 
+
 exec --no-startup-id xss-lock -- ~/.scripts/lockscript
 exec --no-startup-id /opt/piavpn/bin/pia-client
 

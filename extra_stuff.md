@@ -29,3 +29,8 @@ Using vim, type ctrl+v, u, then the last four hex digits of the unicode characte
 ```
 MODULES=(... amdgpu, ...)
 ```
+## Finding out window names for i3
+
+`xprop | grep -i -e '^wm_name\|^wm_class'`
+
+Then click the window in question.

@@ -1,0 +1,1 @@
+Add install maim and the screenshot scripts to .scripts, and the i3 commands for that
