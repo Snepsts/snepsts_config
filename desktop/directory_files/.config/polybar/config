@@ -30,11 +30,9 @@ warning = #FF6D00
 blue = #42A5F5
 
 [bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:DisplayPort-1}
 width = 100%
 height = 36
-;offset-x = 1%
-;offset-y = 0%
 radius = 6.0
 fixed-center = false
 
@@ -70,6 +68,40 @@ inherit = bar/top
 
 tray-position = right
 tray-padding = 1
+
+[bar/right]
+monitor = ${env:MONITOR:HDMI-A-1}
+width = 100%
+height = 36
+radius = 6.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Meslo LG S DZ for Powerline:style=Regular:pixelsize=16;1
+font-1 = Material Design Icons:pixelsize=18
+
+modules-left = memory cpu cpu_temperature gpu_temperature
+modules-center =
+modules-right = date
+
+tray-position = none
+
+cursor-click = pointer
+cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
@@ -124,22 +156,6 @@ label-urgent = %index%
 label-urgent-background = ${colors.primary}
 label-urgent-padding = 1
 
-; [module/cpu]
-; type = internal/cpu
-; interval = 2
-; format-prefix = " "
-; format-prefix-foreground = ${colors.foreground-alt}
-; format-underline = #f90000
-; label = %percentage:2%%
-
-; [module/memory]
-; type = internal/memory
-; interval = 2
-; format-prefix = " "
-; format-prefix-foreground = ${colors.foreground-alt}
-; format-underline = #4bffdc
-; label = %percentage_used%%
-
 [module/eth]
 type = internal/network
 interface = enp7s0
@@ -178,30 +194,67 @@ click-middle = ~/.scripts/pulseaudio_control --change
 scroll-up = ~/.scripts/pulseaudio_control --up
 scroll-down = ~/.scripts/pulseaudio_control --down
 
-; [module/temperature]
-; type = internal/temperature
-; thermal-zone = 0
-; warn-temperature = 60
-
-; format = <ramp> <label>
-; format-underline = #f50a4d
-; format-warn = <ramp> <label-warn>
-; format-warn-underline = ${self.format-underline}
-
-; label = %temperature-c%
-; label-warn = %temperature-c%
-; label-warn-foreground = ${colors.secondary}
-
-; ramp-0 = 
-; ramp-1 = 
-; ramp-2 = 
-; ramp-foreground = ${colors.foreground-alt}
-
 [module/pia]
 type = custom/script
 exec = ~/.scripts/pia
 interval = 1
 click-left = /opt/piavpn/bin/pia-client
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.primary}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = ${colors.primary}
+label = %percentage_used%%
+
+[module/gpu_temperature]
+type = internal/temperature
+hwmon-path = /sys/devices/pci0000:00/0000:00:03.1/0000:09:00.0/0000:0a:00.0/0000:0b:00.0/hwmon/hwmon0/temp1_input
+warn-temperature = 80
+base-temperature = 30
+
+format-prefix = "GPU: "
+format = <ramp> <label>
+format-underline = ${colors.primary}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${colors.red}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+
+ramp-0 = 󰃮
+ramp-1 = 
+ramp-2 = 󰃭
+ramp-foreground = ${colors.foreground}
+
+[module/cpu_temperature]
+type = internal/temperature
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
+warn-temperature = 80
+base-temperature = 20
+
+format-prefix = "CPU: "
+format = <ramp> <label>
+format-underline = ${colors.primary}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${colors.red}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+
+ramp-0 = 󰃮
+ramp-1 = 
+ramp-2 = 󰃭
+ramp-foreground = ${colors.foreground}
 
 [settings]
 screenchange-reload = true
