@@ -425,7 +425,7 @@ Now install `polybar`:
 
 Now install some packages we need for i3:
 
-`sudo pacman -S i3-gaps feh picom rxvt-unicode pulseaudio pulseaudio-alsa i3lock-color xss-lock rofi qt5-styleplugins pavucontrol networkmanager-openvpn xorg-xrandr`
+`sudo pacman -S i3-gaps feh picom rxvt-unicode pulseaudio pulseaudio-alsa i3lock-color xss-lock rofi qt5-styleplugins pavucontrol networkmanager-openvpn xorg-xrandr xclip maim`
 
 Install some font stuff:
 
