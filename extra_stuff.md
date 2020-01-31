@@ -32,13 +32,13 @@ This is called early KMS start or something like that.
 MODULES=(... amdgpu, ...)
 ```
 
+For `intel` use `intel_agp` and then `i915` instead.
+
 ## Finding out window names for i3
 
 `xprop | grep -i -e '^wm_name\|^wm_class'`
 
 Then click the window in question.
-
-For `intel` use `intel_agp` and then `i915` instead.
 
 ## Installing node.js
 
